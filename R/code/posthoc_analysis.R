@@ -251,7 +251,8 @@ xlabels<-data.frame(term=mod_terms) %>%
    mutate(name=case_when(
       grepl("pink",term) ~ "Pink salmon abundance (millions)",
       grepl("SST",term) ~ "Summer SST (°C)",
-      grepl("CFS",term) ~ "Summer low flow anomaly (cf/s)",
+      grepl("CFS_max",term) ~ "High flow anomaly (cf/s)",
+      grepl("CFS_min",term) ~ "Low flow anomaly (cf/s)",
       #grepl("NPGO",term) ~ "NPGO",
    ))
 xtrans<-function(x) { x*df_sds[names(df_sds)==covar]+df_means[names(df_means)==covar] }
