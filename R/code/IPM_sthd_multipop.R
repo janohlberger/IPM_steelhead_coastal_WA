@@ -7,7 +7,7 @@ pacman::p_load(here,tidyverse,rstan,gtools,salmonIPM)
 options(mc.cores=parallel::detectCores())
 rstan_options(auto_write=TRUE)
 
-covar_effects<-TRUE ## TRUE/FALSE
+covar_effects<-FALSE ## TRUE/FALSE
 biastest<-FALSE ## TRUE/FALSE
 
 ##============================================================## data
@@ -45,7 +45,7 @@ IPM_fit<-salmonIPM(
    chains=3,
    iter=2000,
    warmup=1000,
-   control=list(adapt_delta=0.95,max_treedepth=10))
+   control=list(adapt_delta=0.98,max_treedepth=15))
 
 paste(round(max(rowSums(IPM_fit$elapsed_time)/60),2),"min")
 
